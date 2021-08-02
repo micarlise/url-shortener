@@ -1,7 +1,10 @@
 from flask import Flask, request
+from . import db
+
 
 def create_app():
     app = Flask(__name__)
+    db.client.init_db(app)
 
     @app.route('/', methods=['GET'])
     def get_all_codes():

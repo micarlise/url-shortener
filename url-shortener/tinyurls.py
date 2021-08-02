@@ -1,5 +1,5 @@
 from secrets import token_urlsafe
-import db
+from . import db
 
 
 class tiny_url:
@@ -25,8 +25,9 @@ class tiny_url:
             'url': url
         }
 
-        r = self._collection.insert_one(query)
-        return r.acknowledged
+        if self._collection.insert_one(query):
+            return 201
+        return 500
 
     def lookup_key(self, key):
         query = {

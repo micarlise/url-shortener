@@ -9,6 +9,7 @@ def get_all_codes():
     executor = tiny_url()
     return executor.get_all_urls()
 
+
 @bp.route('/<string:short_url>', methods=['GET', 'POST'])
 def get_code(short_url):
     executor = tiny_url()
